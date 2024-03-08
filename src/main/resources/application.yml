@@ -5,9 +5,16 @@ spring:
     password: postgres
   ai:
     openai:
-      temperature: 0.3
       api-key: ${OPENAI_API_KEY}
-      model: gpt-3.5-turbo
-      embedding-base-url: https://api.openai.com
-      embedding-api-key: ${OPENAI_API_KEY}
-      embedding-model: text-embedding-ada-002
+      chat:
+        options:
+          model: gpt-3.5-turbo
+          temperature: 0.3
+      embedding:
+        options:
+          model: text-embedding-ada-002
+
+carina:
+  vectorSearch:
+    topK: 4
+    similarityThreshold: 0.75
