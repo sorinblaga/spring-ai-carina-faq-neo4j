@@ -41,33 +41,19 @@ Run `direnv allow` or `source .envrc` after modifying the .envrc file.
 
 ## VectorStore
 
-To run the PgVectorStore locally, using docker-compose.
+To run the Neo4j database locally, using docker-compose.
 From the top project directory and run:
 
 ```
 docker-compose up
 ```
 
-Later starts Postgres DB on localhost and port 5432.
+Later starts Neo4j DB on localhost and ports HTTP (7474) and Bolt (7687).
 
-Then you can connect to the database (password: `postgres`) and inspect or alter the `vector_store` table content:
+Then you can connect using the Neo4j Browser http://localhost:7474/browser/ 
 
-```
-psql -U postgres -h localhost -p 5432
-
-\l
-\c vector_store
-\dt
-
-select count(*) from vector_store;
-
-delete from vector_store;
-```
-
-You can connect to the pgAdmin on http://localhost:5050  as user: `pgadmin4@pgadmin.org` and pass: `admin`.
-Then navigate to the `Databases/vector_store/Schemas/public/Tables/vector_store`.
-
-The UI tool [DBeaver](https://dbeaver.io/download/) is also a useful GUI for postgres.
+You can connect to the Neo4j Browser on http://localhost:7474/browser/   as user: `neo4j` and pass: `safepassword`.
+Then you can explore the Node labeled `Document`
 
 ## Building and running
 

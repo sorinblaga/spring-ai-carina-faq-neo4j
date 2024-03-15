@@ -24,16 +24,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.postgresql</groupId>-->
+<!--			<artifactId>postgresql</artifactId>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,9 +52,15 @@
 			<artifactId>spring-ai-pdf-document-reader</artifactId>
 			<version>${spring-ai.version}</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.ai</groupId>-->
+<!--			<artifactId>spring-ai-pgvector-store</artifactId>-->
+<!--			<version>${spring-ai.version}</version>-->
+<!--		</dependency>-->
+
 		<dependency>
 			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-pgvector-store</artifactId>
+			<artifactId>spring-ai-neo4j-store</artifactId>
 			<version>${spring-ai.version}</version>
 		</dependency>
 

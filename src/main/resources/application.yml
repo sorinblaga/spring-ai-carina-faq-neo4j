@@ -1,9 +1,13 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/vector_store
-    username: postgres
-    password: postgres
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: safepassword
   ai:
+    vectorstore:
+      neo4j:
+        label: Document
     openai:
       api-key: ${OPENAI_API_KEY}
       chat:

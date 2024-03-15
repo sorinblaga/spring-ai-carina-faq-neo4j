@@ -1,29 +1,27 @@
 package com.example.carina.data;
 
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/data")
 public class DataController {
 
-    private final DataLoadingService dataLoadingService;
+    private final DataService dataService;
 
-    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public DataController(DataLoadingService dataLoadingService, JdbcTemplate jdbcTemplate) {
-        this.dataLoadingService = dataLoadingService;
-        this.jdbcTemplate = jdbcTemplate;
+    public DataController(DataService dataService) {
+        this.dataService = dataService;
     }
 
     @PostMapping("/load")
     public ResponseEntity<String> load() {
         try {
-            this.dataLoadingService.load();
+            this.dataService.load();
             return ResponseEntity.ok("Data loaded successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -33,14 +31,12 @@ public class DataController {
 
     @GetMapping("/count")
     public int count() {
-        String sql = "SELECT COUNT(*) FROM vector_store";
-        return jdbcTemplate.queryForObject(sql, Integer.class);
+        return dataService.count();
     }
 
     @PostMapping("/delete")
     public void delete() {
-        String sql = "DELETE FROM vector_store";
-        jdbcTemplate.update(sql);
+        dataService.delete();
     }
 
 
